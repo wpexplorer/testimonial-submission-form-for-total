@@ -1,70 +1,105 @@
-=== Testimonial Submission Form for Total ===
-Contributors: wpexplorer
-Tags: testimonials, testimonial form, front-end submission, reviews
-Requires at least: 6.0
-Tested up to: 6.8
-Requires PHP: 7.4
-Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# Testimonial Submission Form for Total
 
-Adds a front-end form so visitors can submit testimonials, saved as unpublished entries for you to review.
+Adds a front-end form so visitors can submit their own testimonials on a site running the [Total WordPress theme](https://totalwptheme.com/). Submissions are saved as unpublished entries in Total's Testimonials post type for you to review before they go live.
 
-== Description ==
+## Download
 
-The Total WordPress theme includes a Testimonials post type, but testimonials can only be added from the admin. This plugin adds a front-end form so your visitors can submit their own.
+**[Download testimonial-submission-form-for-total.zip](https://github.com/wpexplorer/testimonial-submission-form-for-total/releases/latest/download/testimonial-submission-form-for-total.zip)**
 
-Submissions are saved as unpublished entries in the Testimonials post type, so nothing appears on your site until you approve it.
+> [!IMPORTANT]
+> Use the link above, not the green **Code → Download ZIP** button. GitHub names that archive after the repository *and* the branch, so you'd end up with a plugin folder called `testimonial-submission-form-for-total-master`. WordPress tracks active plugins by folder name, so installing the correctly named version later would leave you with two copies in your plugins list.
 
-Drop the form anywhere with a shortcode:
+## Requirements
 
-`[testimonial_form]`
+- WordPress
+- The Total theme, with the Testimonials post type enabled
 
-If you use WPBakery Page Builder, a Testimonial Form module is available instead.
+## Installation
 
-= Features =
+1. Go to **Plugins → Add New → Upload Plugin**.
+2. Choose the zip, click **Install Now**, then **Activate**.
 
-* Front-end testimonial submission form
-* Fields for title, name, company, URL, rating and content
-* Turn individual fields on or off per form
-* Custom labels for every field
-* Custom submit button text and success message
-* Configurable maximum rating
-* Filters for developers to adjust the CSS, required fields, and submission status
+Or unzip and upload the `testimonial-submission-form-for-total` folder to `wp-content/plugins/`.
 
-= Requirements =
+### Updating
 
-This plugin extends the Testimonials post type provided by the Total WordPress theme and requires Total to be installed.
+This plugin does not check for or install updates automatically. WordPress won't tell you when a new version is out, so you'll need to update it yourself: download the latest zip, then either upload it again through **Plugins → Add New → Upload Plugin** (WordPress will ask if you want to replace the existing version) or overwrite the folder over FTP.
 
-== Installation ==
+To hear about new versions, click **Watch → Custom → Releases** at the top of this repository.
 
-1. Upload the plugin folder to `/wp-content/plugins/`, or install it through Plugins > Add New.
-2. Activate the plugin through the Plugins menu.
-3. Add the `[testimonial_form]` shortcode to any page, post or widget.
+## Usage
 
-== Frequently Asked Questions ==
+Add the shortcode anywhere on your site:
 
-= Where do submitted testimonials go? =
+```
+[testimonial_form]
+```
 
-They are saved as unpublished entries in the Testimonials post type. Review and publish them from the admin.
+If you're using WPBakery, there's a **Testimonial Form** module you can drop in instead.
 
-= Can I remove a field from the form? =
+## Shortcode parameters
 
-Yes. Set the matching parameter to anything other than "on", for example `[testimonial_form field_title="off"]`.
+### Fields
 
-= Can I change the field labels? =
+Set any of these to something other than `on` to remove that field from the form.
 
-Yes, using the label parameters, for example `[testimonial_form label_title="Testimonial Title"]`.
+| Parameter | Field |
+| --- | --- |
+| `field_title` | Title |
+| `field_name` | Name |
+| `field_company` | Company |
+| `field_url` | URL |
+| `field_rating` | Rating |
+| `field_content` | Content |
 
-= Can I style the form myself? =
+```
+[testimonial_form field_title="off"]
+```
 
-Yes. Return false on the `ttf_css` filter to stop the plugin's stylesheet from loading.
+### Labels
 
-= Does this work without the Total theme? =
+Override the default label text for any field.
 
-No. It extends the Testimonials post type that Total provides.
+`label_title`, `label_name`, `label_company`, `label_url`, `label_rating`, `label_content`
 
-== Changelog ==
+```
+[testimonial_form label_title="Testimonial Title"]
+```
 
-= 1.0.0 =
-* Initial release.
+### Other
+
+| Parameter | Description |
+| --- | --- |
+| `rating_max` | Highest number available in the rating field. Default `5`. |
+| `content_rows` | Rows for the content textarea. |
+| `content_cols` | Columns for the content textarea. |
+| `submit` | Custom text for the submit button. |
+| `success_message` | Custom confirmation message. Set to empty to disable. |
+
+## Filters
+
+Add these to your child theme's `functions.php`.
+
+**`ttf_css`** — boolean, default `true`. Return false to stop the plugin's CSS from loading so you can style the form yourself.
+
+```php
+add_filter( 'ttf_css', '__return_false' );
+```
+
+**`ttf_post_content_required`** — boolean, default `true`. Return false to make the testimonial content optional.
+
+**`ttf_new_status`** — the post status given to new submissions. Default is `pending`.
+
+```php
+add_filter( 'ttf_new_status', function() {
+	return 'draft';
+} );
+```
+
+## Support
+
+Questions about this plugin go through the [Total support system](https://totalwptheme.com/). See the [documentation](https://totalwptheme.com/docs/testimonials-form/) for more.
+
+## License
+
+GPLv2 or later.
