@@ -98,7 +98,7 @@ add_filter( 'ttf_new_status', function() {
 
 ## Support
 
-Questions about this plugin go through the [Total support system](https://totalwptheme.com/). See the [documentation](https://totalwptheme.com/docs/testimonials-form/) for more.
+Questions about this plugin go through the [Total support system](https://my.totalwptheme.com/).
 
 ## License
 
