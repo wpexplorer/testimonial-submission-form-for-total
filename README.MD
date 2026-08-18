@@ -1,4 +1,4 @@
-# Testimonial Submission Form for Total
+# Testimonial Submission Form for Total WordPress Theme
 
 Adds a front-end form so visitors can submit their own testimonials on a site running the [Total WordPress theme](https://totalwptheme.com/). Submissions are saved as unpublished entries in Total's Testimonials post type for you to review before they go live.
 
