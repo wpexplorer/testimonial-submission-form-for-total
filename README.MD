@@ -7,7 +7,7 @@ Adds a front-end form so visitors can submit their own testimonials on a site ru
 **[Download testimonial-submission-form-for-total.zip](https://github.com/wpexplorer/testimonial-submission-form-for-total/releases/latest/download/testimonial-submission-form-for-total.zip)**
 
 > [!IMPORTANT]
-> Use the link above, not the green **Code → Download ZIP** button. GitHub names that archive after the repository *and* the branch, so you'd end up with a plugin folder called `testimonial-submission-form-for-total-master`. WordPress tracks active plugins by folder name, so installing the correctly named version later would leave you with two copies in your plugins list.
+> Use the link above, not the green **Code → Download ZIP** button. GitHub names that archive after the repository *and* the branch, so you'd end up with a plugin folder called `testimonial-submission-form-for-total-main`. WordPress tracks active plugins by folder name, so installing the correctly named version later would leave you with two copies in your plugins list.
 
 ## Requirements
 
